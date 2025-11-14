@@ -1,0 +1,9 @@
+{
+    "require": {
+        "doctrine/doctrine-bundle": "^3.0",
+        "doctrine/doctrine-migrations-bundle": "^3.6"
+    },
+    "require-dev": {
+        "symfony/maker-bundle": "^1.64"
+    }
+}

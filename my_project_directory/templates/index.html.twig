@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head><title>📊 Книжный магазин — Отчёты</title></head>
+<body>
+<h1>📈 Аналитика магазина</h1>
+
+<h2>1. Сколько заказов у клиентов</h2>
+<table border="1" cellpadding="5">
+  <tr><th>Имя</th><th>Email</th><th>Заказов</th></tr>
+  {% for item in customersWithOrderCount %}
+    <tr>
+      <td>{{ item.name }}</td>
+      <td>{{ item.email }}</td>
+      <td>{{ item.orderCount }}</td>
+    </tr>
+  {% endfor %}
+</table>
+
+<h2>2. Последние заказы и их суммы</h2>
+<table border="1" cellpadding="5">
+  <tr><th>ID</th><th>Клиент</th><th>Сумма</th><th>Дата</th></tr>
+  {% for o in recentOrders %}
+    <tr>
+      <td>{{ o.id }}</td>
+      <td>{{ o.customerName }}</td>
+      <td>{{ o.total }} ₽</td>
+      <td>{{ o.createdAt|date('d.m.Y H:i') }}</td>
+    </tr>
+  {% endfor %}
+</table>
+
+<h2>3. Топ-3 клиента по потраченным деньгам</h2>
+<ol>
+  {% for c in top3Customers %}
+    <li><strong>{{ c.name }}</strong> — {{ c.totalSpent }} ₽</li>
+  {% else %}
+    <li>Нет данных</li>
+  {% endfor %}
+</ol>
+
+<h2>4. Средний чек: <strong>{{ averageOrderTotal }} ₽</strong></h2>
+
+<h2>5. Самая дорогая книга</h2>
+{% if mostExpensiveBook %}
+  <p>📖 «{{ mostExpensiveBook.title }}» — <strong>{{ mostExpensiveBook.price }} ₽</strong></p>
+{% else %}
+  <p>Нет книг</p>
+{% endif %}
+</body>
+</html>
