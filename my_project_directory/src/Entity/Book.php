@@ -16,7 +16,7 @@ class Book
     private string $title;
 
     #[ORM\Column(type: 'decimal', precision: 10, scale: 2)]
-    private string $price; 
+    private string $price;
 
     #[ORM\ManyToMany(targetEntity: Order::class, mappedBy: 'books')]
     private $orders;
@@ -26,11 +26,28 @@ class Book
         $this->orders = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
-    public function getId(): ?int { return $this->id; }
-    public function getTitle(): string { return $this->title; }
-    public function setTitle(string $title): self { $this->title = $title; return $this; }
-    public function getPrice(): string { return $this->price; }
-    public function setPrice(string $price): self { $this->price = $price; return $this; }
+    public function getId(): ?int
+    {
+        return $this->id;
+    }
+    public function getTitle(): string
+    {
+        return $this->title;
+    }
+    public function setTitle(string $title): self
+    {
+        $this->title = $title;
+        return $this;
+    }
+    public function getPrice(): string
+    {
+        return $this->price;
+    }
+    public function setPrice(string $price): self
+    {
+        $this->price = $price;
+        return $this;
+    }
 
     public function getOrders()
     {
